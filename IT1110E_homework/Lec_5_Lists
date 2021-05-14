@@ -1,0 +1,185 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Lec 5. Lists",
+      "provenance": [],
+      "authorship_tag": "ABX9TyPSRrLDMX1agAvowWndKtqh",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/tr2512/IT1110E/blob/main/IT1110E_homework/Lec_5_Lists\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "KE64hLDuIJ0N"
+      },
+      "source": [
+        "### Problem 1"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "d2e-a6wYIMTa"
+      },
+      "source": [
+        "lst = [int(x) for x in input().split()]\n",
+        "flag = 0\n",
+        "for i in range(1,len(lst)):\n",
+        "    if lst[i] > lst[i-1]:\n",
+        "        print(lst[i], end =' ')\n",
+        "        flag = 1\n",
+        "if flag == 0:\n",
+        "    print('NONE')"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "xRU8uy-8J3oo"
+      },
+      "source": [
+        "### Problem 2"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "FwkF-wZXJ4tN"
+      },
+      "source": [
+        "n = int(input())\n",
+        "lst = [int(x) for x in input().split()]\n",
+        "k = int(input())\n",
+        "new_lst = [y - k for y in lst]\n",
+        "min = abs(new_lst[0])\n",
+        "for i in range(1,len(lst)):\n",
+        "    if abs(new_lst[i]) < min:\n",
+        "        min = abs(new_lst[i])\n",
+        "        id = i\n",
+        "print(new_lst[id] + k)"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "opYLA1IEMag6"
+      },
+      "source": [
+        "### Problem 3"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "yEEHOUbnMbvN"
+      },
+      "source": [
+        "def remove_duplicates(lst):\n",
+        "    new = []\n",
+        "    for i in lst:\n",
+        "        if lst.count(i) == 1:\n",
+        "            new.append(i)\n",
+        "    return new"
+      ],
+      "execution_count": 22,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "TRnO55a1NOcL"
+      },
+      "source": [
+        "### Problem 4"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "_3g9eU2oNQTH"
+      },
+      "source": [
+        "itial = []\n",
+        "end = []\n",
+        "n, k = input().split()\n",
+        "for i in range(int(k)):\n",
+        "    t, e = input().split()\n",
+        "    itial.append(int(t))\n",
+        "    end.append(int(e))\n",
+        "pins = ['I' for x in range(int(n))]\n",
+        "for j in range(int(k)):\n",
+        "    for l in range (itial[j], end[j] + 1):\n",
+        "        pins[l-1] = '.'\n",
+        "for x in pins:\n",
+        "    print(x, end='')\n"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "JwV6YuIiQ3aF"
+      },
+      "source": [
+        "### Problem 5"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "O-sJPfv0Q5Y4"
+      },
+      "source": [
+        "x = []\n",
+        "y = []\n",
+        "n = int(input())\n",
+        "for i in range(n):\n",
+        "    for j in range(8):\n",
+        "        l, k = input().split()\n",
+        "        x.append(int(l))\n",
+        "        y.append(int(k))\n",
+        "for i in range(n):\n",
+        "    id = 0\n",
+        "    x1 = x[8*i:8*i+8]\n",
+        "    y1 = y[8*i:8*i+8]\n",
+        "    for j in range(8):\n",
+        "        for m in range(8):\n",
+        "            if (x1[j] == x1[m] or y1[j] == y1[m] or abs(x1[j]-x1[m]) == abs(y1[j]-y1[m])) and j != m:\n",
+        "                print('YES')\n",
+        "                id = 1\n",
+        "                break\n",
+        "        if id == 1:\n",
+        "            break\n",
+        "    if id == 0:\n",
+        "        print('NO')        "
+      ],
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
